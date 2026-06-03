@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" x-data="projects()" :class="{'dark': dark}" x-init="init()" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI, machine learning, computer vision and NLP projects by Alphy Sam Rony.">
+  <meta name="author" content="Alphy Sam Rony">
+  <title>Projects | Alphy Sam Rony</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { display: ['PT Sans', 'sans-serif'], body: ['DM Sans', 'sans-serif'] },
+          colors: { accent: '#0F766E', 'accent-light': '#14B8A6' }
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { font-family: 'DM Sans', sans-serif; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'PT Sans', sans-serif; }
+    body { transition: background-color .3s, color .3s; }
+    body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: .32; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E"); }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #0F766E; border-radius: 99px; }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .55s cubic-bezier(.4,0,.2,1), transform .55s cubic-bezier(.4,0,.2,1); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .nav-link { position: relative; }
+    .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1.5px; background: currentColor; transition: width .25s cubic-bezier(.4,0,.2,1); }
+    .nav-link:hover::after { width: 100%; }
+    .btn-primary { position: relative; overflow: hidden; }
+    .btn-primary::after { content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: rgba(255,255,255,.18); transform: skewX(-20deg); transition: left .4s cubic-bezier(.4,0,.2,1); }
+    .btn-primary:hover::after { left: 160%; }
+    .project-card { transition: transform .3s cubic-bezier(.4,0,.2,1), border-color .2s; }
+    .project-card:hover { transform: translateY(-4px); }
+    .tech-pill { border: 1px solid rgba(15,118,110,.24); background: rgba(20,184,166,.08); color: #0F766E; }
+    .dark .tech-pill { border-color: rgba(45,212,191,.22); background: rgba(20,184,166,.08); color: #5EEAD4; }
+    .project-visual { min-height: 13rem; }
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+<body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-body antialiased">
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+    :class="scrolled ? 'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-sm shadow-black/5' : 'bg-transparent'">
+    <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
+      <a href="index.html" class="font-display font-bold text-xl tracking-tight z-10">
+        <span class="text-zinc-900 dark:text-white">Alphy</span><span class="text-accent">Rony</span>
+      </a>
+      <ul class="hidden md:flex items-center gap-8 text-sm font-medium" role="list">
+        <li><a href="index.html#summary" class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Summary</a></li>
+        <li><a href="projects.html" class="nav-link text-accent font-medium">Projects</a></li>
+        <li><a href="index.html#internship" class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Internship</a></li>
+        <li><a href="index.html#skills" class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Skills</a></li>
+        <li><a href="index.html#education" class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Education</a></li>
+        <li><a href="index.html#contact" class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Contact</a></li>
+      </ul>
+      <div class="flex items-center gap-3">
+        <button @click="dark = !dark; localStorage.setItem('theme', dark ? 'dark' : 'light')" class="w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors" :aria-label="dark ? 'Light mode' : 'Dark mode'">
+          <svg x-show="!dark" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          <svg x-show="dark" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+        </button>
+        <a href="Alphy-Sam-Rony-Resume.pdf" download class="hidden md:inline-flex items-center gap-2 btn-primary bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors">Resume</a>
+        <button @click="mobileMenu = !mobileMenu" class="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800" aria-label="Toggle menu">
+          <svg x-show="!mobileMenu" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg x-show="mobileMenu" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </nav>
+    <div x-show="mobileMenu" x-cloak class="md:hidden bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900">
+      <ul class="flex flex-col px-6 py-4 gap-4 text-sm font-medium" role="list">
+        <li><a href="index.html#summary" @click="mobileMenu = false" class="block text-zinc-700 dark:text-zinc-300">Summary</a></li>
+        <li><a href="projects.html" class="block text-accent font-medium">Projects</a></li>
+        <li><a href="index.html#internship" @click="mobileMenu = false" class="block text-zinc-700 dark:text-zinc-300">Internship</a></li>
+        <li><a href="index.html#skills" @click="mobileMenu = false" class="block text-zinc-700 dark:text-zinc-300">Skills</a></li>
+        <li><a href="index.html#education" @click="mobileMenu = false" class="block text-zinc-700 dark:text-zinc-300">Education</a></li>
+        <li><a href="index.html#contact" @click="mobileMenu = false" class="block text-zinc-700 dark:text-zinc-300">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="pt-36 pb-12 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-80 h-80 bg-teal-100/70 dark:bg-teal-900/20 blur-3xl pointer-events-none" aria-hidden="true"></div>
+      <div class="max-w-6xl mx-auto px-6 relative z-10">
+        <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Project portfolio</p>
+        <h1 class="reveal font-display font-bold text-5xl md:text-6xl text-zinc-900 dark:text-white leading-tight mb-4">AI, ML and Python Projects</h1>
+        <p class="reveal text-lg text-zinc-500 dark:text-zinc-400 max-w-2xl leading-relaxed mb-8">Projects from my resume covering multimodal AI, object detection, image classification, NLP chatbots and real-time computer vision.</p>
+        <div class="reveal flex flex-wrap gap-2">
+          <template x-for="f in filterOptions" :key="f.value">
+            <button
+              @click="filter = f.value"
+              :class="filter === f.value ? 'bg-accent text-white border-accent' : 'bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700 hover:border-accent'"
+              class="text-sm px-4 py-1.5 rounded-full border transition-colors"
+              x-text="f.label">
+            </button>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-24">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <template x-for="p in allProjects" :key="p.id">
+            <article
+              x-show="filter === 'all' || p.category === filter"
+              x-transition:enter="transition ease-out duration-300"
+              x-transition:enter-start="opacity-0 scale-95 translate-y-2"
+              x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+              x-transition:leave="transition ease-in duration-200"
+              x-transition:leave-start="opacity-100 scale-100"
+              x-transition:leave-end="opacity-0 scale-95"
+              class="project-card group h-full rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors">
+              <div class="project-visual p-6 bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-100 dark:border-zinc-800">
+                <div class="h-full rounded-2xl bg-white dark:bg-zinc-800 border border-zinc-100 dark:border-zinc-700 p-5 flex flex-col justify-between">
+                  <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-green-400"></span>
+                  </div>
+                  <div>
+                    <p class="text-xs text-zinc-400 uppercase tracking-widest mb-2" x-text="p.visualLabel"></p>
+                    <p class="font-display font-bold text-3xl text-accent" x-text="p.short"></p>
+                  </div>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex flex-wrap gap-2 mb-3">
+                  <template x-for="tag in p.tags" :key="tag">
+                    <span class="tech-pill text-xs px-2.5 py-1 rounded-full" x-text="tag"></span>
+                  </template>
+                </div>
+                <a :href="p.url">
+                  <h2 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors" x-text="p.title"></h2>
+                </a>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-5" x-text="p.desc"></p>
+                <div class="flex items-center justify-between gap-4">
+                  <a :href="p.url" :target="p.external ? '_blank' : null" :rel="p.external ? 'noopener noreferrer' : null" class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nav-link" x-text="p.cta"></a>
+                  <span class="text-xs text-zinc-400" x-text="p.year"></span>
+                </div>
+              </div>
+            </article>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-24">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="bg-zinc-900 dark:bg-zinc-800 rounded-3xl p-10 md:p-14 text-center relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-64 h-64 bg-teal-500/20 blur-3xl pointer-events-none" aria-hidden="true"></div>
+          <div class="relative z-10">
+            <p class="text-xs font-medium text-accent-light tracking-widest uppercase mb-4">Open to opportunities</p>
+            <h2 class="font-display font-bold text-3xl md:text-4xl text-white mb-4">Interested in my work?</h2>
+            <p class="text-zinc-400 max-w-md mx-auto mb-8">I am available for internships, entry-level software work and AI/ML project collaboration.</p>
+            <a href="index.html#contact" class="inline-flex items-center gap-2 btn-primary bg-accent text-white font-medium px-8 py-3.5 rounded-full hover:bg-accent-light transition-colors">Contact me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-zinc-100 dark:border-zinc-900">
+    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-zinc-400">&copy; <span id="year"></span> Alphy Sam Rony. All rights reserved.</p>
+      <p class="text-xs text-zinc-500">Built with Tailwind CSS &amp; Alpine.js</p>
+    </div>
+  </footer>
+
+  <script>
+    function projects() {
+      return {
+        dark: false,
+        scrolled: false,
+        mobileMenu: false,
+        filter: 'all',
+        filterOptions: [
+          { value: 'all', label: 'All (5)' },
+          { value: 'ai', label: 'AI Assistant' },
+          { value: 'cv', label: 'Computer Vision' },
+          { value: 'nlp', label: 'NLP' }
+        ],
+        allProjects: [
+          {
+            id: 1,
+            title: 'Catty - Multimodal AI Assistant',
+            category: 'ai',
+            tags: ['Streamlit', 'Gemini', 'YOLOv8', 'OpenCV', 'SQLite'],
+            year: '2026',
+            desc: 'Browser-based assistant for text, image and voice interactions with object detection, image quality analysis, visual question answering and chat history.',
+            url: 'case-study.html',
+            cta: 'View case study',
+            external: false,
+            visualLabel: 'Multimodal AI',
+            short: 'Catty'
+          },
+          {
+            id: 2,
+            title: 'Vehicle Detection System',
+            category: 'cv',
+            tags: ['Python', 'YOLO', 'PyTorch', 'Colab'],
+            year: '2026',
+            desc: 'Real-time vehicle detection system using YOLO object detection and traffic datasets for vehicle identification in images and video streams.',
+            url: 'https://github.com/whitenight-36/vehical-detection',
+            cta: 'Open GitHub',
+            external: true,
+            visualLabel: 'Object detection',
+            short: 'YOLO'
+          },
+          {
+            id: 3,
+            title: 'Animal Classification System',
+            category: 'cv',
+            tags: ['Python', 'TensorFlow', 'CNN', 'Deep Learning'],
+            year: '2026',
+            desc: 'CNN image classification model for multiple animal species, including preprocessing, training and model evaluation.',
+            url: 'https://github.com/whitenight-36/animal-classification',
+            cta: 'Open GitHub',
+            external: true,
+            visualLabel: 'Image classification',
+            short: 'CNN'
+          },
+          {
+            id: 4,
+            title: 'Simple Medical Chatbot',
+            category: 'nlp',
+            tags: ['Python', 'NLP', 'NLTK', 'Scikit-Learn'],
+            year: '2026',
+            desc: 'Healthcare query chatbot using text preprocessing, intent recognition and automated conversational responses.',
+            url: 'https://github.com/whitenight-36/simple-chatbot',
+            cta: 'Open GitHub',
+            external: true,
+            visualLabel: 'Intent recognition',
+            short: 'NLP'
+          },
+          {
+            id: 5,
+            title: 'Face Detection System',
+            category: 'cv',
+            tags: ['Python', 'OpenCV', 'Haar Cascade', 'NumPy'],
+            year: '2026',
+            desc: 'Real-time face detection and tracking application using Haar Cascade and image processing techniques.',
+            url: 'https://github.com/whitenight-36/face',
+            cta: 'Open GitHub',
+            external: true,
+            visualLabel: 'Real-time vision',
+            short: 'Face'
+          }
+        ],
+        init() {
+          this.dark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          window.addEventListener('scroll', () => {
+            this.scrolled = window.scrollY > 20;
+          }, { passive: true });
+          this.$nextTick(() => {
+            const obs = new IntersectionObserver(entries => {
+              entries.forEach(e => {
+                if (e.isIntersecting) {
+                  e.target.classList.add('visible');
+                  obs.unobserve(e.target);
+                }
+              });
+            }, { threshold: .08, rootMargin: '0px 0px -30px 0px' });
+            document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+          });
+          document.getElementById('year').textContent = new Date().getFullYear();
+        }
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en" x-data="app()" :class="{'dark': dark}" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Alphy Sam Rony, BCA student and AI/ML developer from Pathanamthitta, Kerala. Machine learning, data science, computer vision, NLP and Python projects.">
+  <meta name="keywords" content="Alphy Sam Rony, machine learning, data science, python developer, computer vision, NLP, BCA student, portfolio">
+  <meta name="author" content="Alphy Sam Rony">
+  <meta property="og:title" content="Alphy Sam Rony | AI and Machine Learning Portfolio">
+  <meta property="og:description" content="BCA student focused on Machine Learning, Data Science, AI, Computer Vision, NLP and Software Development.">
+  <meta property="og:type" content="website">
+  <title>Alphy Sam Rony | AI &amp; Machine Learning Portfolio</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['PT Sans', 'sans-serif'],
+            body: ['DM Sans', 'sans-serif']
+          },
+          colors: {
+            accent: '#0F766E',
+            'accent-light': '#14B8A6',
+            ink: '#111827'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { font-family: 'DM Sans', sans-serif; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'PT Sans', sans-serif; }
+    body { transition: background-color .3s, color .3s; }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: .32;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
+    }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #0F766E; border-radius: 99px; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s cubic-bezier(.4,0,.2,1), transform .6s cubic-bezier(.4,0,.2,1); }
+    .reveal.in { opacity: 1; transform: none; }
+    .d1 { transition-delay: .08s; }
+    .d2 { transition-delay: .16s; }
+    .d3 { transition-delay: .24s; }
+    .nl { position: relative; }
+    .nl::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1.5px; background: currentColor; transition: width .22s cubic-bezier(.4,0,.2,1); }
+    .nl:hover::after, .nl.on::after { width: 100%; }
+    .nl.on { font-weight: 600; }
+    .btn-shine { position: relative; overflow: hidden; }
+    .btn-shine::after { content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: rgba(255,255,255,.18); transform: skewX(-20deg); transition: left .4s cubic-bezier(.4,0,.2,1); }
+    .btn-shine:hover::after { left: 160%; }
+    .photo-frame { overflow: hidden; background: #e4e4e7; }
+    .photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .card-h { transition: transform .28s cubic-bezier(.4,0,.2,1), border-color .18s, box-shadow .18s; }
+    .card-h:hover { transform: translateY(-4px); }
+    .tech-pill { border: 1px solid rgba(15,118,110,.24); background: rgba(20,184,166,.08); color: #0F766E; }
+    .dark .tech-pill { border-color: rgba(45,212,191,.22); background: rgba(20,184,166,.08); color: #5EEAD4; }
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+
+<body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased">
+  <header class="fixed inset-x-0 top-0 z-50 transition-all duration-300"
+    :class="sc ? 'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-sm shadow-black/5' : ''">
+    <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
+      <a href="#hero" class="font-display font-bold text-xl tracking-tight relative z-10">
+        
+      </a>
+
+      <ul class="hidden md:flex items-center gap-8 text-sm" role="list">
+        <li><a href="#summary" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s === 'summary' ? 'on !text-zinc-900 dark:!text-white' : ''">Summary</a></li>
+        <li><a href="#projects" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s === 'projects' ? 'on !text-zinc-900 dark:!text-white' : ''">Projects</a></li>
+        <li><a href="#internship" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s === 'internship' ? 'on !text-zinc-900 dark:!text-white' : ''">Internship</a></li>
+        <li><a href="#skills" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s === 'skills' ? 'on !text-zinc-900 dark:!text-white' : ''">Skills</a></li>
+        <li><a href="#education" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s === 'education' ? 'on !text-zinc-900 dark:!text-white' : ''">Education</a></li>
+        <li><a href="#contact" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s === 'contact' ? 'on !text-zinc-900 dark:!text-white' : ''">Contact</a></li>
+      </ul>
+
+      <div class="flex items-center gap-3">
+        <button @click="dark = !dark" class="w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors" :aria-label="dark ? 'Light mode' : 'Dark mode'">
+          <svg x-show="!dark" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          <svg x-show="dark" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+        </button>
+        <a href="Alphy-Sam-Rony-Resume.pdf" class="hidden md:inline-flex items-center gap-2 btn-shine bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors" download>Resume</a>
+        <button @click="mm = !mm" class="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800" :aria-expanded="mm" aria-label="Toggle menu">
+          <svg x-show="!mm" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg x-show="mm" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <div x-show="mm" x-cloak
+      x-transition:enter="transition ease-out duration-200"
+      x-transition:enter-start="opacity-0 -translate-y-2"
+      x-transition:enter-end="opacity-100 translate-y-0"
+      x-transition:leave="transition ease-in duration-150"
+      x-transition:leave-start="opacity-100 translate-y-0"
+      x-transition:leave-end="opacity-0 -translate-y-2"
+      class="md:hidden bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900">
+      <ul class="flex flex-col px-6 py-5 gap-4 text-sm font-medium" role="list">
+        <li><a href="#summary" @click="mm = false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Summary</a></li>
+        <li><a href="#projects" @click="mm = false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Projects</a></li>
+        <li><a href="#internship" @click="mm = false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Internship</a></li>
+        <li><a href="#skills" @click="mm = false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Skills</a></li>
+        <li><a href="#education" @click="mm = false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Education</a></li>
+        <li><a href="#contact" @click="mm = false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Contact</a></li>
+        <li class="pt-2 border-t border-zinc-100 dark:border-zinc-900">
+          <a href="Alphy-Sam-Rony-Resume.pdf" class="inline-flex btn-shine bg-accent text-white font-medium text-sm px-5 py-2.5 rounded-full" download>Download resume</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="relative min-h-screen flex items-center pt-16 overflow-hidden">
+      <div class="absolute top-20 right-0 w-80 h-80 bg-teal-100/70 dark:bg-teal-900/20 blur-3xl pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute bottom-10 left-0 w-72 h-72 bg-sky-100/60 dark:bg-sky-900/20 blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+      <div class="relative z-10 max-w-6xl mx-auto px-6 py-24 w-full">
+        <div class="grid md:grid-cols-[1.08fr_.92fr] gap-12 items-center">
+          <div>
+            <p class="reveal text-sm font-medium text-accent tracking-widest uppercase mb-4">BCA Student | AI &amp; ML Developer</p>
+            <h1 class="reveal d1 font-display font-bold text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight text-zinc-900 dark:text-white mb-6">
+              Hi, I'm <span class="text-accent">Alphy Sam Rony</span>
+            </h1>
+            <p class="reveal d2 text-lg md:text-xl text-zinc-500 dark:text-zinc-400 font-light leading-relaxed max-w-xl mb-10">
+              Motivated BCA student from Pathanamthitta, Kerala, focused on Machine Learning, Data Science, Artificial Intelligence, Computer Vision, NLP and Software Development.
+            </p>
+            <div class="reveal d3 flex flex-wrap gap-4">
+              <a href="#projects" class="btn-shine inline-flex items-center gap-2 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-medium px-7 py-3.5 rounded-full hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors text-sm">
+                View projects
+              </a>
+              <a href="Alphy-Sam-Rony-Resume.pdf" download class="inline-flex items-center gap-2 border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 font-medium px-7 py-3.5 rounded-full hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors text-sm">Download resume</a>
+            </div>
+            <div class="reveal d3 flex flex-wrap gap-3 mt-8 text-sm text-zinc-500 dark:text-zinc-400">
+              <a class="hover:text-accent transition-colors" href="mailto:alphysamrony@gmail.com">alphysamrony@gmail.com</a>
+              <span aria-hidden="true">/</span>
+              <a class="hover:text-accent transition-colors" href="tel:+919605462279">+91 9605462279</a>
+              <span aria-hidden="true">/</span>
+              <span>Pathanamthitta, Kerala</span>
+            </div>
+            <div class="reveal d3 grid grid-cols-2 sm:grid-cols-4 gap-4 mt-14 pt-8 border-t border-zinc-100 dark:border-zinc-900">
+              <div><p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">2024-28</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">BCA timeline</p></div>
+              <div><p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">5</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">AI projects</p></div>
+              <div><p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">2026</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">ML internship</p></div>
+              <div><p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">4</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Languages</p></div>
+            </div>
+          </div>
+
+          <div class="reveal d2 flex justify-center md:justify-end">
+            <div class="relative w-72 h-[25rem] md:w-80 md:h-[29rem] lg:w-96 lg:h-[33rem]">
+              <div class="photo-frame w-full h-full rounded-[2rem] shadow-2xl shadow-teal-950/10">
+                <img src="assets/alphy-sam-roni-profile.jpeg" alt="Alphy Sam Rony profile photo" loading="eager">
+              </div>
+              <div class="absolute -bottom-4 -left-4 bg-accent text-white font-display font-bold text-sm px-4 py-2.5 rounded-2xl shadow-lg">Open to AI and software roles</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="summary" class="py-24 bg-zinc-50 dark:bg-zinc-900/40">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid lg:grid-cols-[.8fr_1.2fr] gap-12 items-start">
+          <div>
+            <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Career objective</p>
+            <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">Summary</h2>
+          </div>
+          <div class="reveal d2 bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800">
+            <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed text-lg">
+              I am seeking opportunities as a Data Scientist, Machine Learning Engineer, Python Developer, Data Analyst, Prompt Engineer or Software Engineer. My project experience includes AI-powered applications, image classification systems, NLP chatbots and object detection models.
+            </p>
+            <div class="grid sm:grid-cols-2 gap-4 mt-8">
+              <div class="border border-zinc-100 dark:border-zinc-800 rounded-xl p-5">
+                <p class="font-display font-bold text-zinc-900 dark:text-white mb-1">Current study</p>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400">Bachelor of Computer Applications, Mahatma Gandhi University</p>
+              </div>
+              <div class="border border-zinc-100 dark:border-zinc-800 rounded-xl p-5">
+                <p class="font-display font-bold text-zinc-900 dark:text-white mb-1">Current focus</p>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400">Python, ML models, computer vision, NLP, data workflows</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="focus" class="py-24">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="mb-14">
+          <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">What I work on</p>
+          <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">Focus areas</h2>
+        </div>
+        <div class="grid md:grid-cols-4 gap-6">
+          <article class="reveal d1 card-h bg-white dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+            <p class="text-3xl font-display font-bold text-accent mb-5">01</p>
+            <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Machine Learning</h3>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">Supervised learning, Random Forest, SVM, KNN, Decision Trees and Logistic Regression.</p>
+          </article>
+          <article class="reveal d2 card-h bg-zinc-900 dark:bg-zinc-800 rounded-2xl p-7 border border-zinc-800 hover:border-accent">
+            <p class="text-3xl font-display font-bold text-accent mb-5">02</p>
+            <h3 class="font-display font-bold text-xl text-white mb-3">Computer Vision</h3>
+            <p class="text-sm text-zinc-400 leading-relaxed">Object detection, image classification, OpenCV pipelines, YOLOv8 and CNN-based models.</p>
+          </article>
+          <article class="reveal d3 card-h bg-white dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+            <p class="text-3xl font-display font-bold text-accent mb-5">03</p>
+            <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">NLP &amp; Chatbots</h3>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">Intent recognition, text preprocessing, NLTK workflows and conversational AI interfaces.</p>
+          </article>
+          <article class="reveal d3 card-h bg-white dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+            <p class="text-3xl font-display font-bold text-accent mb-5">04</p>
+            <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Software Development</h3>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">Python apps, Streamlit interfaces, SQLite storage, GitHub workflows and data analysis tools.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="py-24 bg-zinc-50 dark:bg-zinc-900/40">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-14">
+          <div>
+            <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Portfolio</p>
+            <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">Resume projects</h2>
+          </div>
+          <a href="projects.html" class="reveal d1 text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-accent transition-colors self-start sm:self-auto nl">All projects</a>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <article class="card-h reveal d1 group rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent md:row-span-2">
+            <div class="p-7 md:p-8">
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tech-pill text-xs px-3 py-1 rounded-full">Streamlit</span>
+                <span class="tech-pill text-xs px-3 py-1 rounded-full">Gemini 2.5 Flash</span>
+                <span class="tech-pill text-xs px-3 py-1 rounded-full">YOLOv8</span>
+                <span class="tech-pill text-xs px-3 py-1 rounded-full">SQLite</span>
+              </div>
+              <a href="case-study.html">
+                <h3 class="font-display font-bold text-2xl text-zinc-900 dark:text-white mb-3 group-hover:text-accent transition-colors">Catty - Multimodal AI Assistant</h3>
+              </a>
+              <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-6">
+                Browser-based multimodal AI assistant supporting text, image and voice interactions. Integrated Gemini for conversation, YOLOv8 for real-time object detection, OpenCV for image quality analysis, BLIP for visual question answering and SQLite for multi-session chat history.
+              </p>
+              <div class="flex flex-wrap gap-3">
+                <a href="case-study.html" class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nl">View case study</a>
+                <a href="https://github.com/whitenight-36/catty-chatbot" rel="noopener noreferrer" target="_blank" class="inline-flex items-center gap-1.5 text-sm font-medium text-accent nl">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card-h reveal d2 group rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent p-7">
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">YOLO</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">PyTorch</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">Google Colab</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Vehicle Detection System</h3>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-5">Real-time vehicle detection system trained and evaluated on traffic datasets to identify vehicles in images and video streams.</p>
+            <a href="https://github.com/whitenight-36/vehical-detection" rel="noopener noreferrer" target="_blank" class="text-sm font-medium text-accent nl">GitHub</a>
+          </article>
+
+          <article class="card-h reveal d3 group rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent p-7">
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">TensorFlow</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">CNN</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">Deep Learning</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Animal Classification System</h3>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-5">Image classification model using Convolutional Neural Networks to classify multiple animal species from uploaded images.</p>
+            <a href="https://github.com/whitenight-36/animal-classification" rel="noopener noreferrer" target="_blank" class="text-sm font-medium text-accent nl">GitHub</a>
+          </article>
+
+          <article class="card-h reveal d2 group rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent p-7">
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">NLP</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">NLTK</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">Scikit-Learn</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Simple Medical Chatbot</h3>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-5">NLP chatbot that answers common healthcare-related queries using preprocessing and intent recognition techniques.</p>
+            <a href="https://github.com/whitenight-36/simple-chatbot" rel="noopener noreferrer" target="_blank" class="text-sm font-medium text-accent nl">GitHub</a>
+          </article>
+
+          <article class="card-h reveal d3 group rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent p-7">
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">OpenCV</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">Haar Cascade</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">NumPy</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-3">Face Detection System</h3>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-5">Real-time face detection and tracking application using OpenCV, Haar Cascade and image processing techniques.</p>
+            <a href="https://github.com/whitenight-36/face" rel="noopener noreferrer" target="_blank" class="text-sm font-medium text-accent nl">GitHub</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="internship" class="py-24">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid lg:grid-cols-[.8fr_1.2fr] gap-12 items-start">
+          <div>
+            <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Experience</p>
+            <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">Internship</h2>
+          </div>
+          <article class="reveal d2 bg-zinc-900 dark:bg-zinc-800 rounded-2xl p-8 border border-zinc-800">
+            <p class="text-sm text-accent font-medium mb-2">April 2026 - June 2026</p>
+            <h3 class="font-display font-bold text-2xl text-white mb-1">Machine Learning Intern</h3>
+            <p class="text-zinc-400 mb-6">NEXT GEN PRO</p>
+            <ul class="grid sm:grid-cols-2 gap-4 text-sm text-zinc-300 leading-relaxed">
+              <li class="border border-zinc-700 rounded-xl p-4">Worked on machine learning models using Python.</li>
+              <li class="border border-zinc-700 rounded-xl p-4">Performed data preprocessing and feature engineering on datasets.</li>
+              <li class="border border-zinc-700 rounded-xl p-4">Built classification models using Random Forest and SVM.</li>
+              <li class="border border-zinc-700 rounded-xl p-4">Applied ML concepts to real-world business datasets.</li>
+              <li class="border border-zinc-700 rounded-xl p-4">Improved model evaluation and prediction techniques.</li>
+              <li class="border border-zinc-700 rounded-xl p-4">Collaborated with mentors and peers on AI and Data Science projects.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="py-24 bg-zinc-50 dark:bg-zinc-900/40">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="mb-14">
+          <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Technical skills</p>
+          <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">Skills</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="reveal d1 bg-white dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
+            <h3 class="font-display font-bold text-xl mb-4">Programming</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">Python</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">Java</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">C</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">SQL</span>
+            </div>
+          </div>
+          <div class="reveal d2 bg-white dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
+            <h3 class="font-display font-bold text-xl mb-4">ML &amp; AI</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">Supervised Learning</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">Deep Learning</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">Computer Vision</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">NLP</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">Random Forest</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">SVM</span>
+            </div>
+          </div>
+          <div class="reveal d3 bg-white dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
+            <h3 class="font-display font-bold text-xl mb-4">Libraries</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">Scikit-Learn</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">TensorFlow</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">PyTorch</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">OpenCV</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">NLTK</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">Pandas</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">NumPy</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">Streamlit</span>
+            </div>
+          </div>
+          <div class="reveal d3 bg-white dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
+            <h3 class="font-display font-bold text-xl mb-4">Tools</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">Google Colab</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">Git</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">GitHub</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">SQLite</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">YOLOv8</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">Three.js</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="py-24">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="mb-14">
+          <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Resume details</p>
+          <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">Education &amp; more</h2>
+        </div>
+        <div class="grid lg:grid-cols-3 gap-6">
+          <div class="reveal d1 bg-white dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
+            <h3 class="font-display font-bold text-xl mb-5">Education</h3>
+            <div class="space-y-5">
+              <div>
+                <p class="font-medium">Bachelor of Computer Applications</p>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400">St. Thomas College, Thavalappara, Konni</p>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400">Mahatma Gandhi University, Kottayam</p>
+                <p class="text-xs text-accent mt-1">2024 - 2028</p>
+              </div>
+              <div class="pt-5 border-t border-zinc-100 dark:border-zinc-800">
+                <p class="font-medium">Higher Secondary Education (CBSE)</p>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400">Holy Angels Model School, Pathanamthitta</p>
+                <p class="text-xs text-accent mt-1">Year of Passing: 2024</p>
+              </div>
+            </div>
+          </div>
+          <div class="reveal d2 bg-white dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
+            <h3 class="font-display font-bold text-xl mb-5">Certification</h3>
+            <p class="font-medium">Artificial Intelligence Certification</p>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Duration: 6 months</p>
+            <p class="text-xs text-accent mt-1">Year: 2024</p>
+            <h3 class="font-display font-bold text-xl mt-8 mb-4">Languages</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">English</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">Malayalam</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">Hindi</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">Tamil (Basic)</span>
+            </div>
+          </div>
+          <div class="reveal d3 bg-white dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
+            <h3 class="font-display font-bold text-xl mb-5">Soft skills</h3>
+            <div class="grid grid-cols-2 gap-2 text-sm">
+              <span class="rounded-lg bg-zinc-50 dark:bg-zinc-800 p-3">Problem Solving</span>
+              <span class="rounded-lg bg-zinc-50 dark:bg-zinc-800 p-3">Team Collaboration</span>
+              <span class="rounded-lg bg-zinc-50 dark:bg-zinc-800 p-3">Communication</span>
+              <span class="rounded-lg bg-zinc-50 dark:bg-zinc-800 p-3">Leadership</span>
+              <span class="rounded-lg bg-zinc-50 dark:bg-zinc-800 p-3">Time Management</span>
+              <span class="rounded-lg bg-zinc-50 dark:bg-zinc-800 p-3">Critical Thinking</span>
+              <span class="rounded-lg bg-zinc-50 dark:bg-zinc-800 p-3 col-span-2">Adaptability</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-zinc-50 dark:bg-zinc-900/40">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="bg-zinc-900 dark:bg-zinc-800 rounded-3xl p-10 md:p-16 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-64 h-64 bg-teal-500/20 blur-3xl pointer-events-none" aria-hidden="true"></div>
+          <div class="relative z-10 grid md:grid-cols-[.9fr_1.1fr] gap-12 items-start">
+            <div>
+              <p class="reveal text-xs font-medium text-accent-light tracking-widest uppercase mb-3">Contact</p>
+              <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-white leading-tight mb-5">Let's connect</h2>
+              <p class="reveal d2 text-zinc-400 leading-relaxed mb-8">I am open to internships, entry-level AI/ML roles, Python development work and collaborative academic projects.</p>
+              <div class="reveal d3 flex flex-wrap gap-3">
+                <a href="mailto:alphysamrony@gmail.com" class="btn-shine bg-accent text-white font-medium px-6 py-3 rounded-full hover:bg-accent-light transition-colors text-sm">Email me</a>
+                <a href="Alphy-Sam-Rony-Resume.pdf" download class="border border-zinc-700 text-zinc-200 font-medium px-6 py-3 rounded-full hover:bg-zinc-800 transition-colors text-sm">Download resume</a>
+              </div>
+            </div>
+            <div class="reveal d2 grid sm:grid-cols-2 gap-4">
+              <a href="mailto:alphysamrony@gmail.com" class="group rounded-2xl border border-zinc-800 bg-zinc-800/50 p-5 hover:border-accent transition-colors">
+                <p class="text-xs text-zinc-500 uppercase tracking-widest mb-2">Email</p>
+                <p class="text-sm text-zinc-200 group-hover:text-white">alphysamrony@gmail.com</p>
+              </a>
+              <a href="tel:+919605462279" class="group rounded-2xl border border-zinc-800 bg-zinc-800/50 p-5 hover:border-accent transition-colors">
+                <p class="text-xs text-zinc-500 uppercase tracking-widest mb-2">Phone</p>
+                <p class="text-sm text-zinc-200 group-hover:text-white">+91 9605462279</p>
+              </a>
+              <a href="https://linkedin.com/in/alphy-sam-rony-6071133a8" target="_blank" rel="noopener noreferrer" class="group rounded-2xl border border-zinc-800 bg-zinc-800/50 p-5 hover:border-accent transition-colors">
+                <p class="text-xs text-zinc-500 uppercase tracking-widest mb-2">LinkedIn</p>
+                <p class="text-sm text-zinc-200 group-hover:text-white">alphy-sam-rony-6071133a8</p>
+              </a>
+              <a href="https://github.com/whitenight-36" target="_blank" rel="noopener noreferrer" class="group rounded-2xl border border-zinc-800 bg-zinc-800/50 p-5 hover:border-accent transition-colors">
+                <p class="text-xs text-zinc-500 uppercase tracking-widest mb-2">GitHub</p>
+                <p class="text-sm text-zinc-200 group-hover:text-white">github.com/whitenight-36</p>
+              </a>
+              <div class="rounded-2xl border border-zinc-800 bg-zinc-800/50 p-5 sm:col-span-2">
+                <p class="text-xs text-zinc-500 uppercase tracking-widest mb-2">Location</p>
+                <p class="text-sm text-zinc-200">Pathanamthitta, Kerala, India</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-zinc-100 dark:border-zinc-900">
+    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-zinc-400">&copy; <span id="yr"></span> Alphy Sam Rony. All rights reserved.</p>
+      <p class="text-xs text-zinc-500">Built with Tailwind CSS &amp; Alpine.js</p>
+    </div>
+  </footer>
+
+  <script>
+    function app() {
+      return {
+        dark: false,
+        mm: false,
+        sc: false,
+        s: 'hero',
+        init() {
+          this.dark = localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          this.$watch('dark', v => localStorage.setItem('theme', v ? 'dark' : 'light'));
+
+          window.addEventListener('scroll', () => {
+            this.sc = window.scrollY > 20;
+            this.updateSection();
+          }, { passive: true });
+
+          const io = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+              if (e.isIntersecting) {
+                e.target.classList.add('in');
+                io.unobserve(e.target);
+              }
+            });
+          }, { threshold: .1, rootMargin: '0px 0px -40px 0px' });
+          document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+          document.getElementById('yr').textContent = new Date().getFullYear();
+          this.updateSection();
+        },
+        updateSection() {
+          const atBottom = (window.innerHeight + window.scrollY) >= document.body.scrollHeight - 60;
+          if (atBottom) { this.s = 'contact'; return; }
+          const ids = ['contact', 'education', 'skills', 'internship', 'projects', 'summary', 'hero'];
+          for (const id of ids) {
+            const el = document.getElementById(id);
+            if (el && window.scrollY >= el.offsetTop - 130) {
+              this.s = id;
+              return;
+            }
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>
