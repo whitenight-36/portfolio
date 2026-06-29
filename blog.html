@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" x-data="{ dark: localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches), scrolled: false, mobileMenu: false }" :class="{'dark': dark}" x-init="$watch('dark', v => localStorage.setItem('theme', v ? 'dark' : 'light')); window.addEventListener('scroll', () => scrolled = window.scrollY > 20, { passive: true })" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Certification, learning focus, languages and soft skills for Alphy Sam Rony.">
-  <meta name="author" content="Alphy Sam Rony">
-  <title>Resume Details | Alphy Sam Rony</title>
+  <meta name="description" content="Certification, learning focus, languages and soft skills for Alphy Sam Roni.">
+  <meta name="author" content="Alphy Sam Roni">
+  <title>Resume Details | Alphy Sam Roni</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,13 +45,14 @@
     .card:hover { transform: translateY(-3px); }
     [x-cloak] { display: none !important; }
   </style>
+  <link rel="stylesheet" href="assets/site-background.css">
 </head>
 <body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-body antialiased">
   <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
     :class="scrolled ? 'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-sm shadow-black/5' : 'bg-transparent'">
     <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
       <a href="index.html" class="font-display font-bold text-xl tracking-tight z-10">
-        <span class="text-zinc-900 dark:text-white">Alphy</span><span class="text-accent">Rony</span>
+        <span class="text-zinc-900 dark:text-white">Alphy</span><span class="text-accent">Roni</span>
       </a>
       <ul class="hidden md:flex items-center gap-8 text-sm font-medium" role="list">
         <li><a href="index.html#summary" class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Summary</a></li>
@@ -66,7 +67,7 @@
           <svg x-show="!dark" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
           <svg x-show="dark" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
         </button>
-        <a href="Alphy-Sam-Rony-Resume.pdf" download class="hidden md:inline-flex items-center gap-2 btn-primary bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors">Resume</a>
+        <a href="Alphy-Sam-Roni-Resume.pdf" download class="hidden md:inline-flex items-center gap-2 btn-primary bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors">Resume</a>
         <button @click="mobileMenu = !mobileMenu" class="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800" aria-label="Toggle menu">
           <svg x-show="!mobileMenu" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
           <svg x-show="mobileMenu" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -90,19 +91,24 @@
       <div class="absolute top-0 right-0 w-80 h-80 bg-teal-100/70 dark:bg-teal-900/20 blur-3xl pointer-events-none" aria-hidden="true"></div>
       <div class="max-w-6xl mx-auto px-6 relative z-10">
         <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Resume details</p>
-        <h1 class="reveal font-display font-bold text-5xl md:text-6xl text-zinc-900 dark:text-white leading-tight mb-4">Learning, Certification and Personal Strengths</h1>
-        <p class="reveal text-lg text-zinc-500 dark:text-zinc-400 max-w-2xl leading-relaxed">This page replaces the old blog template with resume-based information: AI certification, study focus, languages and soft skills.</p>
+        <h1 class="reveal font-display font-bold text-5xl md:text-6xl text-zinc-900 dark:text-white leading-tight mb-4">Learning, Certifications and Personal Strengths</h1>
+        <p class="reveal text-lg text-zinc-500 dark:text-zinc-400 max-w-2xl leading-relaxed">Professional credentials, Google AI coursework, AWS Machine Learning certification, study focus, languages and soft skills.</p>
       </div>
     </section>
 
     <section class="pb-24">
       <div class="max-w-6xl mx-auto px-6">
-        <div class="grid md:grid-cols-3 gap-6">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           <article class="reveal card bg-white dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
-            <p class="text-xs text-accent uppercase tracking-widest mb-3">Certification</p>
-            <h2 class="font-display font-bold text-2xl mb-3">Artificial Intelligence Certification</h2>
-            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-5">Completed a six-month Artificial Intelligence certification in 2024.</p>
+            <p class="text-xs text-accent uppercase tracking-widest mb-3">Google credential</p>
+            <h2 class="font-display font-bold text-2xl mb-3">Google AI Professional Certificate</h2>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-5">Completed seven Google AI courses in 3 days, covering practical AI work from research and writing to data analysis and app building.</p>
             <a href="blog-article.html" class="text-sm font-medium text-accent nav-link">View learning note</a>
+          </article>
+          <article class="reveal card bg-white dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
+            <p class="text-xs text-accent uppercase tracking-widest mb-3">AWS credential</p>
+            <h2 class="font-display font-bold text-2xl mb-3">AWS Certified Machine Learning</h2>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">Certified in 2026 with focus on machine learning, data workflows, model development and AWS-based ML practices.</p>
           </article>
           <article class="reveal card bg-white dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
             <p class="text-xs text-accent uppercase tracking-widest mb-3">Languages</p>
@@ -127,7 +133,7 @@
             <div>
               <p class="text-xs text-accent-light uppercase tracking-widest mb-3">Study focus</p>
               <h2 class="font-display font-bold text-3xl md:text-4xl text-white mb-4">Building toward AI and software roles</h2>
-              <p class="text-zinc-400 leading-relaxed">My current learning path is focused on Python, machine learning model building, computer vision, natural language processing, data preprocessing and practical software development.</p>
+              <p class="text-zinc-400 leading-relaxed">My current learning path is focused on Python, machine learning model building, computer vision, natural language processing, data preprocessing, AI-assisted productivity and practical software development.</p>
             </div>
             <div class="grid sm:grid-cols-2 gap-3 text-sm text-zinc-300">
               <span class="rounded-xl border border-zinc-700 p-4">Machine Learning</span>
@@ -136,6 +142,8 @@
               <span class="rounded-xl border border-zinc-700 p-4">Computer Vision</span>
               <span class="rounded-xl border border-zinc-700 p-4">NLP</span>
               <span class="rounded-xl border border-zinc-700 p-4">Python Development</span>
+              <span class="rounded-xl border border-zinc-700 p-4">AI App Building</span>
+              <span class="rounded-xl border border-zinc-700 p-4">AWS Machine Learning</span>
             </div>
           </div>
         </div>
@@ -145,7 +153,7 @@
 
   <footer class="border-t border-zinc-100 dark:border-zinc-900">
     <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="text-sm text-zinc-400">&copy; <span id="yr"></span> Alphy Sam Rony. All rights reserved.</p>
+      <p class="text-sm text-zinc-400">&copy; <span id="yr"></span> Alphy Sam Roni. All rights reserved.</p>
       <p class="text-xs text-zinc-500">Built with Tailwind CSS &amp; Alpine.js</p>
     </div>
   </footer>

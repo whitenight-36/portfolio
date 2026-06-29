@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" x-data="{ dark: localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches), scrolled: false, mobileMenu: false, progress: 0 }" :class="{'dark': dark}" x-init="$watch('dark', v => localStorage.setItem('theme', v ? 'dark' : 'light')); window.addEventListener('scroll', () => { scrolled = window.scrollY > 20; const max = document.body.scrollHeight - window.innerHeight; progress = max > 0 ? Math.min(100, Math.round((window.scrollY / max) * 100)) : 0; }, { passive: true })" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Artificial Intelligence certification learning note by Alphy Sam Rony.">
-  <meta name="author" content="Alphy Sam Rony">
-  <title>AI Certification Note | Alphy Sam Rony</title>
+  <meta name="description" content="Google AI Professional Certificate learning note by Alphy Sam Roni.">
+  <meta name="author" content="Alphy Sam Roni">
+  <title>Google AI Professional Certificate | Alphy Sam Roni</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,6 +52,7 @@
     .reveal.visible { opacity: 1; transform: translateY(0); }
     [x-cloak] { display: none !important; }
   </style>
+  <link rel="stylesheet" href="assets/site-background.css">
 </head>
 <body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-body antialiased">
   <div class="progress-bar" :style="`width:${progress}%`" role="progressbar" :aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100" aria-label="Reading progress"></div>
@@ -60,7 +61,7 @@
     :class="scrolled ? 'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-sm shadow-black/5' : 'bg-transparent'">
     <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
       <a href="index.html" class="font-display font-bold text-xl tracking-tight z-10">
-        <span class="text-zinc-900 dark:text-white">Alphy</span><span class="text-accent">Rony</span>
+        <span class="text-zinc-900 dark:text-white">Alphy</span><span class="text-accent">Roni</span>
       </a>
       <ul class="hidden md:flex items-center gap-8 text-sm font-medium" role="list">
         <li><a href="index.html#summary" class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Summary</a></li>
@@ -75,7 +76,7 @@
           <svg x-show="!dark" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
           <svg x-show="dark" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
         </button>
-        <a href="Alphy-Sam-Rony-Resume.pdf" download class="hidden md:inline-flex items-center gap-2 btn-primary bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors">Resume</a>
+        <a href="Alphy-Sam-Roni-Resume.pdf" download class="hidden md:inline-flex items-center gap-2 btn-primary bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors">Resume</a>
         <button @click="mobileMenu = !mobileMenu" class="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800" aria-label="Toggle menu">
           <svg x-show="!mobileMenu" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
           <svg x-show="mobileMenu" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -99,40 +100,42 @@
       <header class="pt-32 pb-12 max-w-3xl mx-auto px-6">
         <a href="blog.html" class="inline-flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400 hover:text-accent transition-colors mb-8">Back to resume details</a>
         <div class="flex items-center gap-3 mb-5">
-          <span class="tech-pill text-xs px-2.5 py-1 rounded-full">Artificial Intelligence</span>
-          <span class="text-xs text-zinc-400">2024 | 6 months</span>
+          <span class="tech-pill text-xs px-2.5 py-1 rounded-full">Google AI</span>
+          <span class="text-xs text-zinc-400">Completed June 28, 2026</span>
         </div>
-        <h1 class="font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white leading-tight mb-6">Artificial Intelligence Certification</h1>
-        <p class="text-xl text-zinc-500 dark:text-zinc-400 leading-relaxed mb-8">A focused six-month certification that supported my foundation in AI, model-building concepts and practical machine learning workflows.</p>
+        <h1 class="font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white leading-tight mb-6">Google AI Professional Certificate</h1>
+        <p class="text-xl text-zinc-500 dark:text-zinc-400 leading-relaxed mb-8">A seven-course Google AI learning path completed in 3 days, focused on using AI professionally for research, planning, writing, content creation, data analysis and app building.</p>
         <div class="flex items-center gap-4 py-6 border-t border-b border-zinc-100 dark:border-zinc-900">
           <div class="w-12 h-12 rounded-full overflow-hidden bg-zinc-100 dark:bg-zinc-800 shrink-0">
-            <img src="assets/alphy-sam-roni-profile.jpeg" alt="Alphy Sam Rony" class="w-full h-full object-cover">
+            <img src="assets/alphy-sam-roni-profile.jpeg" alt="Alphy Sam Roni" class="w-full h-full object-cover">
           </div>
           <div>
-            <p class="font-medium text-zinc-900 dark:text-white text-sm">Alphy Sam Rony</p>
+            <p class="font-medium text-zinc-900 dark:text-white text-sm">Alphy Sam Roni</p>
             <p class="text-xs text-zinc-500">BCA Student | AI &amp; ML Developer</p>
           </div>
         </div>
       </header>
 
       <div class="max-w-3xl mx-auto px-6 pb-16 prose-article">
-        <h2>Why this certification matters</h2>
-        <p>The certification helped me connect theory with practice. It supports the project work in my resume, including AI-powered applications, image classification systems, NLP chatbots and object detection models.</p>
+        <h2>Why this certificate matters</h2>
+        <p>The Google AI Professional Certificate strengthened my ability to use AI as a practical work partner, from structuring ideas and research to communicating clearly, analyzing data and building app concepts.</p>
 
-        <h2>Core learning areas</h2>
+        <h2>Completed Google AI courses</h2>
         <ul>
-          <li>Machine learning concepts and supervised learning workflows.</li>
-          <li>Model training, evaluation and prediction techniques.</li>
-          <li>Data preprocessing and feature engineering.</li>
-          <li>Computer vision and image-based AI systems.</li>
-          <li>Natural language processing and chatbot foundations.</li>
+          <li>Google AI Fundamentals.</li>
+          <li>AI for Brainstorming and Planning.</li>
+          <li>AI in Research and Insights.</li>
+          <li>AI in Writing and Communicating.</li>
+          <li>AI for Content Creation.</li>
+          <li>AI for Data Analysis.</li>
+          <li>AI for App Building.</li>
         </ul>
 
         <h2>How I applied it</h2>
-        <p>I applied these concepts through resume projects like Catty, Vehicle Detection, Animal Classification, Simple Medical Chatbot and Face Detection. These projects helped me move from learning individual concepts to building complete applications.</p>
+        <p>I use these skills alongside my technical AI and ML work, including Catty, Vehicle Detection, Animal Classification, Simple Medical Chatbot and Face Detection. The course pathway helps me plan projects better, communicate results clearly and use AI tools responsibly while building software.</p>
 
         <h2>Current direction</h2>
-        <p>My goal is to keep improving as a Data Scientist, Machine Learning Engineer, Python Developer, Data Analyst, Prompt Engineer or Software Engineer by building practical AI tools and learning from real datasets.</p>
+        <p>My goal is to keep improving as a Data Scientist, Machine Learning Engineer, Python Developer, Data Analyst, Prompt Engineer or Software Engineer by combining hands-on model development with professional AI workflows and cloud-based machine learning knowledge.</p>
 
         <p><a href="index.html#contact">Contact me</a> for internships, entry-level opportunities or collaborative AI projects.</p>
       </div>
@@ -141,7 +144,7 @@
 
   <footer class="border-t border-zinc-100 dark:border-zinc-900">
     <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="text-sm text-zinc-400">&copy; <span id="yr"></span> Alphy Sam Rony. All rights reserved.</p>
+      <p class="text-sm text-zinc-400">&copy; <span id="yr"></span> Alphy Sam Roni. All rights reserved.</p>
       <p class="text-xs text-zinc-500">Built with Tailwind CSS &amp; Alpine.js</p>
     </div>
   </footer>

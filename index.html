@@ -1,15 +1,15 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" x-data="app()" :class="{'dark': dark}" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio of Alphy Sam Rony, BCA student and AI/ML developer from Pathanamthitta, Kerala. Machine learning, data science, computer vision, NLP and Python projects.">
-  <meta name="keywords" content="Alphy Sam Rony, machine learning, data science, python developer, computer vision, NLP, BCA student, portfolio">
-  <meta name="author" content="Alphy Sam Rony">
-  <meta property="og:title" content="Alphy Sam Rony | AI and Machine Learning Portfolio">
+  <meta name="description" content="Portfolio of Alphy Sam Roni, BCA student and AI/ML developer from Pathanamthitta, Kerala. Machine learning, data science, computer vision, NLP and Python projects.">
+  <meta name="keywords" content="Alphy Sam Roni, machine learning, data science, python developer, computer vision, NLP, BCA student, portfolio">
+  <meta name="author" content="Alphy Sam Roni">
+  <meta property="og:title" content="Alphy Sam Roni | AI and Machine Learning Portfolio">
   <meta property="og:description" content="BCA student focused on Machine Learning, Data Science, AI, Computer Vision, NLP and Software Development.">
   <meta property="og:type" content="website">
-  <title>Alphy Sam Rony | AI &amp; Machine Learning Portfolio</title>
+  <title>Alphy Sam Roni | AI &amp; Machine Learning Portfolio</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -73,6 +73,7 @@
     .dark .tech-pill { border-color: rgba(45,212,191,.22); background: rgba(20,184,166,.08); color: #5EEAD4; }
     [x-cloak] { display: none !important; }
   </style>
+  <link rel="stylesheet" href="assets/site-background.css">
 </head>
 
 <body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased">
@@ -97,7 +98,7 @@
           <svg x-show="!dark" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
           <svg x-show="dark" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
         </button>
-        <a href="Alphy-Sam-Rony-Resume.pdf" class="hidden md:inline-flex items-center gap-2 btn-shine bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors" download>Resume</a>
+        <a href="Alphy-Sam-Roni-Resume.pdf" class="hidden md:inline-flex items-center gap-2 btn-shine bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors" download>Resume</a>
         <button @click="mm = !mm" class="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800" :aria-expanded="mm" aria-label="Toggle menu">
           <svg x-show="!mm" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
           <svg x-show="mm" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -121,7 +122,7 @@
         <li><a href="#education" @click="mm = false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Education</a></li>
         <li><a href="#contact" @click="mm = false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Contact</a></li>
         <li class="pt-2 border-t border-zinc-100 dark:border-zinc-900">
-          <a href="Alphy-Sam-Rony-Resume.pdf" class="inline-flex btn-shine bg-accent text-white font-medium text-sm px-5 py-2.5 rounded-full" download>Download resume</a>
+          <a href="Alphy-Sam-Roni-Resume.pdf" class="inline-flex btn-shine bg-accent text-white font-medium text-sm px-5 py-2.5 rounded-full" download>Download resume</a>
         </li>
       </ul>
     </div>
@@ -137,7 +138,7 @@
           <div>
             <p class="reveal text-sm font-medium text-accent tracking-widest uppercase mb-4">BCA Student | AI &amp; ML Developer</p>
             <h1 class="reveal d1 font-display font-bold text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight text-zinc-900 dark:text-white mb-6">
-              Hi, I'm <span class="text-accent">Alphy Sam Rony</span>
+              Hi, I'm <span class="text-accent">Alphy Sam Roni</span>
             </h1>
             <p class="reveal d2 text-lg md:text-xl text-zinc-500 dark:text-zinc-400 font-light leading-relaxed max-w-xl mb-10">
               Motivated BCA student from Pathanamthitta, Kerala, focused on Machine Learning, Data Science, Artificial Intelligence, Computer Vision, NLP and Software Development.
@@ -146,7 +147,7 @@
               <a href="#projects" class="btn-shine inline-flex items-center gap-2 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-medium px-7 py-3.5 rounded-full hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors text-sm">
                 View projects
               </a>
-              <a href="Alphy-Sam-Rony-Resume.pdf" download class="inline-flex items-center gap-2 border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 font-medium px-7 py-3.5 rounded-full hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors text-sm">Download resume</a>
+              <a href="Alphy-Sam-Roni-Resume.pdf" download class="inline-flex items-center gap-2 border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 font-medium px-7 py-3.5 rounded-full hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors text-sm">Download resume</a>
             </div>
             <div class="reveal d3 flex flex-wrap gap-3 mt-8 text-sm text-zinc-500 dark:text-zinc-400">
               <a class="hover:text-accent transition-colors" href="mailto:alphysamrony@gmail.com">alphysamrony@gmail.com</a>
@@ -159,14 +160,14 @@
               <div><p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">2024-28</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">BCA timeline</p></div>
               <div><p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">5</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">AI projects</p></div>
               <div><p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">2026</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">ML internship</p></div>
-              <div><p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">4</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Languages</p></div>
+              <div><p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">8</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">AI credentials</p></div>
             </div>
           </div>
 
           <div class="reveal d2 flex justify-center md:justify-end">
             <div class="relative w-72 h-[25rem] md:w-80 md:h-[29rem] lg:w-96 lg:h-[33rem]">
               <div class="photo-frame w-full h-full rounded-[2rem] shadow-2xl shadow-teal-950/10">
-                <img src="assets/alphy-sam-roni-profile.jpeg" alt="Alphy Sam Rony profile photo" loading="eager">
+                <img src="assets/alphy-sam-roni-profile.jpeg" alt="Alphy Sam Roni profile photo" loading="eager">
               </div>
               <div class="absolute -bottom-4 -left-4 bg-accent text-white font-display font-bold text-sm px-4 py-2.5 rounded-2xl shadow-lg">Open to AI and software roles</div>
             </div>
@@ -383,7 +384,7 @@
               <span class="tech-pill text-xs px-3 py-1 rounded-full">GitHub</span>
               <span class="tech-pill text-xs px-3 py-1 rounded-full">SQLite</span>
               <span class="tech-pill text-xs px-3 py-1 rounded-full">YOLOv8</span>
-              <span class="tech-pill text-xs px-3 py-1 rounded-full">Three.js</span>
+              <span class="tech-pill text-xs px-3 py-1 rounded-full">AWS</span>
             </div>
           </div>
         </div>
@@ -414,10 +415,31 @@
             </div>
           </div>
           <div class="reveal d2 bg-white dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
-            <h3 class="font-display font-bold text-xl mb-5">Certification</h3>
-            <p class="font-medium">Artificial Intelligence Certification</p>
-            <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Duration: 6 months</p>
-            <p class="text-xs text-accent mt-1">Year: 2024</p>
+            <h3 class="font-display font-bold text-xl mb-5">Certifications</h3>
+            <div class="space-y-5">
+              <div>
+                <p class="font-medium">Google AI Professional Certificate</p>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Completed seven Google AI courses in 3 days, covering practical AI use across research, writing, content, analysis and app building.</p>
+                <p class="text-xs text-accent mt-1">Completed: June 28, 2026</p>
+              </div>
+              <div class="pt-5 border-t border-zinc-100 dark:border-zinc-800">
+                <p class="font-medium">AWS Certified Machine Learning</p>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Validates machine learning knowledge across AWS-based model development, deployment and data workflows.</p>
+                <p class="text-xs text-accent mt-1">Year: 2026</p>
+              </div>
+              <div class="pt-5 border-t border-zinc-100 dark:border-zinc-800">
+                <p class="font-medium mb-3">Google AI course pathway</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="tech-pill text-xs px-3 py-1 rounded-full">Google AI Fundamentals</span>
+                  <span class="tech-pill text-xs px-3 py-1 rounded-full">AI for Brainstorming and Planning</span>
+                  <span class="tech-pill text-xs px-3 py-1 rounded-full">AI in Research and Insights</span>
+                  <span class="tech-pill text-xs px-3 py-1 rounded-full">AI in Writing and Communicating</span>
+                  <span class="tech-pill text-xs px-3 py-1 rounded-full">AI for Content Creation</span>
+                  <span class="tech-pill text-xs px-3 py-1 rounded-full">AI for Data Analysis</span>
+                  <span class="tech-pill text-xs px-3 py-1 rounded-full">AI for App Building</span>
+                </div>
+              </div>
+            </div>
             <h3 class="font-display font-bold text-xl mt-8 mb-4">Languages</h3>
             <div class="flex flex-wrap gap-2">
               <span class="tech-pill text-xs px-3 py-1 rounded-full">English</span>
@@ -453,7 +475,7 @@
               <p class="reveal d2 text-zinc-400 leading-relaxed mb-8">I am open to internships, entry-level AI/ML roles, Python development work and collaborative academic projects.</p>
               <div class="reveal d3 flex flex-wrap gap-3">
                 <a href="mailto:alphysamrony@gmail.com" class="btn-shine bg-accent text-white font-medium px-6 py-3 rounded-full hover:bg-accent-light transition-colors text-sm">Email me</a>
-                <a href="Alphy-Sam-Rony-Resume.pdf" download class="border border-zinc-700 text-zinc-200 font-medium px-6 py-3 rounded-full hover:bg-zinc-800 transition-colors text-sm">Download resume</a>
+                <a href="Alphy-Sam-Roni-Resume.pdf" download class="border border-zinc-700 text-zinc-200 font-medium px-6 py-3 rounded-full hover:bg-zinc-800 transition-colors text-sm">Download resume</a>
               </div>
             </div>
             <div class="reveal d2 grid sm:grid-cols-2 gap-4">
@@ -486,7 +508,7 @@
 
   <footer class="border-t border-zinc-100 dark:border-zinc-900">
     <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="text-sm text-zinc-400">&copy; <span id="yr"></span> Alphy Sam Rony. All rights reserved.</p>
+      <p class="text-sm text-zinc-400">&copy; <span id="yr"></span> Alphy Sam Roni. All rights reserved.</p>
       <p class="text-xs text-zinc-500">Built with Tailwind CSS &amp; Alpine.js</p>
     </div>
   </footer>
