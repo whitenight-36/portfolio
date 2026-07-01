@@ -76,7 +76,7 @@
   <link rel="stylesheet" href="assets/site-background.css">
 </head>
 
-<body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased">
+<body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased" @keydown.escape.window="closeCertificate()">
   <header class="fixed inset-x-0 top-0 z-50 transition-all duration-300"
     :class="sc ? 'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-sm shadow-black/5' : ''">
     <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
@@ -421,11 +421,19 @@
                 <p class="font-medium">Google AI Professional Certificate</p>
                 <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Completed seven Google AI courses in 3 days, covering practical AI use across research, writing, content, analysis and app building.</p>
                 <p class="text-xs text-accent mt-1">Completed: June 28, 2026</p>
+                <button type="button" @click="openCertificate('Google AI Professional Certificate', 'assets/certificates/google-ai-professional-certificate-1.png', 'Google AI Professional Certificate awarded to Alphy Sam Roni')" class="mt-4 inline-flex items-center gap-2 rounded-full border border-accent/30 px-4 py-2 text-xs font-medium text-accent transition-colors hover:bg-teal-50 dark:hover:bg-teal-950/30">
+                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 12s3.75-6.75 9.75-6.75S21.75 12 21.75 12s-3.75 6.75-9.75 6.75S2.25 12 2.25 12z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                  View certificate
+                </button>
               </div>
               <div class="pt-5 border-t border-zinc-100 dark:border-zinc-800">
                 <p class="font-medium">AWS Certified Machine Learning</p>
                 <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Validates machine learning knowledge across AWS-based model development, deployment and data workflows.</p>
                 <p class="text-xs text-accent mt-1">Year: 2026</p>
+                <button type="button" @click="openCertificate('AWS Certified Machine Learning', 'assets/certificates/aws-certified-machine-learning-1.png', 'AWS Certified Machine Learning certificate awarded to Alphy Sam Roni')" class="mt-4 inline-flex items-center gap-2 rounded-full border border-accent/30 px-4 py-2 text-xs font-medium text-accent transition-colors hover:bg-teal-50 dark:hover:bg-teal-950/30">
+                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 12s3.75-6.75 9.75-6.75S21.75 12 21.75 12s-3.75 6.75-9.75 6.75S2.25 12 2.25 12z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                  View certificate
+                </button>
               </div>
               <div class="pt-5 border-t border-zinc-100 dark:border-zinc-800">
                 <p class="font-medium mb-3">Google AI course pathway</p>
@@ -506,6 +514,20 @@
     </section>
   </main>
 
+  <div x-show="cert" x-cloak class="fixed inset-0 z-[70] bg-zinc-950/80 px-4 py-6 backdrop-blur-sm md:py-10" role="dialog" aria-modal="true" :aria-label="cert ? cert.title : 'Certificate viewer'" @click.self="closeCertificate()">
+    <div class="mx-auto flex h-full max-w-6xl flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-2xl dark:border-zinc-800 dark:bg-zinc-950">
+      <div class="flex items-center justify-between gap-4 border-b border-zinc-100 px-5 py-4 dark:border-zinc-800">
+        <h2 class="font-display text-xl font-bold text-zinc-900 dark:text-white" x-text="cert ? cert.title : ''"></h2>
+        <button type="button" @click="closeCertificate()" class="flex h-10 w-10 items-center justify-center rounded-full border border-zinc-200 text-zinc-600 transition-colors hover:bg-zinc-100 dark:border-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-900" aria-label="Close certificate viewer">
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="min-h-0 flex-1 overflow-auto bg-zinc-100 p-3 dark:bg-zinc-900 md:p-6">
+        <img x-show="cert" :src="cert ? cert.image : ''" :alt="cert ? cert.alt : ''" class="mx-auto block w-full max-w-5xl rounded-xl border border-zinc-200 bg-white shadow-lg dark:border-zinc-800" draggable="false" @contextmenu.prevent>
+      </div>
+    </div>
+  </div>
+
   <footer class="border-t border-zinc-100 dark:border-zinc-900">
     <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <p class="text-sm text-zinc-400">&copy; <span id="yr"></span> Alphy Sam Roni. All rights reserved.</p>
@@ -520,6 +542,7 @@
         mm: false,
         sc: false,
         s: 'hero',
+        cert: null,
         init() {
           this.dark = localStorage.getItem('theme') === 'dark' ||
             (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
@@ -553,6 +576,14 @@
               return;
             }
           }
+        },
+        openCertificate(title, image, alt) {
+          this.cert = { title, image, alt };
+          document.body.style.overflow = 'hidden';
+        },
+        closeCertificate() {
+          this.cert = null;
+          document.body.style.overflow = '';
         }
       }
     }

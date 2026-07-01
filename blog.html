@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en" x-data="{ dark: localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches), scrolled: false, mobileMenu: false }" :class="{'dark': dark}" x-init="$watch('dark', v => localStorage.setItem('theme', v ? 'dark' : 'light')); window.addEventListener('scroll', () => scrolled = window.scrollY > 20, { passive: true })" class="scroll-smooth">
+<html lang="en" x-data="certificationsPage()" :class="{'dark': dark}" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,7 +47,7 @@
   </style>
   <link rel="stylesheet" href="assets/site-background.css">
 </head>
-<body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-body antialiased">
+<body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-body antialiased" @keydown.escape.window="closeCertificate()">
   <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
     :class="scrolled ? 'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-sm shadow-black/5' : 'bg-transparent'">
     <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
@@ -103,12 +103,22 @@
             <p class="text-xs text-accent uppercase tracking-widest mb-3">Google credential</p>
             <h2 class="font-display font-bold text-2xl mb-3">Google AI Professional Certificate</h2>
             <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-5">Completed seven Google AI courses in 3 days, covering practical AI work from research and writing to data analysis and app building.</p>
-            <a href="blog-article.html" class="text-sm font-medium text-accent nav-link">View learning note</a>
+            <div class="flex flex-wrap items-center gap-3">
+              <a href="blog-article.html" class="text-sm font-medium text-accent nav-link">View learning note</a>
+              <button type="button" @click="openCertificate('Google AI Professional Certificate', 'assets/certificates/google-ai-professional-certificate-1.png', 'Google AI Professional Certificate awarded to Alphy Sam Roni')" class="inline-flex items-center gap-2 rounded-full border border-accent/30 px-4 py-2 text-xs font-medium text-accent transition-colors hover:bg-teal-50 dark:hover:bg-teal-950/30">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 12s3.75-6.75 9.75-6.75S21.75 12 21.75 12s-3.75 6.75-9.75 6.75S2.25 12 2.25 12z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                View certificate
+              </button>
+            </div>
           </article>
           <article class="reveal card bg-white dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
             <p class="text-xs text-accent uppercase tracking-widest mb-3">AWS credential</p>
             <h2 class="font-display font-bold text-2xl mb-3">AWS Certified Machine Learning</h2>
-            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">Certified in 2026 with focus on machine learning, data workflows, model development and AWS-based ML practices.</p>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-5">Certified in 2026 with focus on machine learning, data workflows, model development and AWS-based ML practices.</p>
+            <button type="button" @click="openCertificate('AWS Certified Machine Learning', 'assets/certificates/aws-certified-machine-learning-1.png', 'AWS Certified Machine Learning certificate awarded to Alphy Sam Roni')" class="inline-flex items-center gap-2 rounded-full border border-accent/30 px-4 py-2 text-xs font-medium text-accent transition-colors hover:bg-teal-50 dark:hover:bg-teal-950/30">
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 12s3.75-6.75 9.75-6.75S21.75 12 21.75 12s-3.75 6.75-9.75 6.75S2.25 12 2.25 12z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              View certificate
+            </button>
           </article>
           <article class="reveal card bg-white dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800 hover:border-accent">
             <p class="text-xs text-accent uppercase tracking-widest mb-3">Languages</p>
@@ -151,6 +161,20 @@
     </section>
   </main>
 
+  <div x-show="cert" x-cloak class="fixed inset-0 z-[70] bg-zinc-950/80 px-4 py-6 backdrop-blur-sm md:py-10" role="dialog" aria-modal="true" :aria-label="cert ? cert.title : 'Certificate viewer'" @click.self="closeCertificate()">
+    <div class="mx-auto flex h-full max-w-6xl flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-2xl dark:border-zinc-800 dark:bg-zinc-950">
+      <div class="flex items-center justify-between gap-4 border-b border-zinc-100 px-5 py-4 dark:border-zinc-800">
+        <h2 class="font-display text-xl font-bold text-zinc-900 dark:text-white" x-text="cert ? cert.title : ''"></h2>
+        <button type="button" @click="closeCertificate()" class="flex h-10 w-10 items-center justify-center rounded-full border border-zinc-200 text-zinc-600 transition-colors hover:bg-zinc-100 dark:border-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-900" aria-label="Close certificate viewer">
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="min-h-0 flex-1 overflow-auto bg-zinc-100 p-3 dark:bg-zinc-900 md:p-6">
+        <img x-show="cert" :src="cert ? cert.image : ''" :alt="cert ? cert.alt : ''" class="mx-auto block w-full max-w-5xl rounded-xl border border-zinc-200 bg-white shadow-lg dark:border-zinc-800" draggable="false" @contextmenu.prevent>
+      </div>
+    </div>
+  </div>
+
   <footer class="border-t border-zinc-100 dark:border-zinc-900">
     <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <p class="text-sm text-zinc-400">&copy; <span id="yr"></span> Alphy Sam Roni. All rights reserved.</p>
@@ -159,6 +183,30 @@
   </footer>
 
   <script>
+    function certificationsPage() {
+      return {
+        dark: localStorage.getItem('theme') === 'dark' ||
+          (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches),
+        scrolled: false,
+        mobileMenu: false,
+        cert: null,
+        init() {
+          this.$watch('dark', v => localStorage.setItem('theme', v ? 'dark' : 'light'));
+          window.addEventListener('scroll', () => {
+            this.scrolled = window.scrollY > 20;
+          }, { passive: true });
+        },
+        openCertificate(title, image, alt) {
+          this.cert = { title, image, alt };
+          document.body.style.overflow = 'hidden';
+        },
+        closeCertificate() {
+          this.cert = null;
+          document.body.style.overflow = '';
+        }
+      }
+    }
+
     document.getElementById('yr').textContent = new Date().getFullYear();
     const observer = new IntersectionObserver(entries => {
       entries.forEach(e => {
