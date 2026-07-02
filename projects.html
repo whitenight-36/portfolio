@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="AI, machine learning, computer vision and NLP projects by Alphy Sam Roni.">
+  <meta name="description" content="Selected AI, machine learning, computer vision and NLP projects by Alphy Sam Roni, including Python, Streamlit, OpenCV and deep learning work.">
   <meta name="author" content="Alphy Sam Roni">
   <title>Projects | Alphy Sam Roni</title>
   <script src="https://cdn.tailwindcss.com"></script>
@@ -91,9 +91,9 @@
     <section class="pt-36 pb-12 relative overflow-hidden">
       <div class="absolute top-0 right-0 w-80 h-80 bg-teal-100/70 dark:bg-teal-900/20 blur-3xl pointer-events-none" aria-hidden="true"></div>
       <div class="max-w-6xl mx-auto px-6 relative z-10">
-        <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Project portfolio</p>
-        <h1 class="reveal font-display font-bold text-5xl md:text-6xl text-zinc-900 dark:text-white leading-tight mb-4">AI, ML and Python Projects</h1>
-        <p class="reveal text-lg text-zinc-500 dark:text-zinc-400 max-w-2xl leading-relaxed mb-8">Projects from my resume covering multimodal AI, object detection, image classification, NLP chatbots and real-time computer vision.</p>
+        <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Selected work</p>
+        <h1 class="reveal font-display font-bold text-5xl md:text-6xl text-zinc-900 dark:text-white leading-tight mb-4">AI, Machine Learning and Python Projects</h1>
+        <p class="reveal text-lg text-zinc-500 dark:text-zinc-400 max-w-2xl leading-relaxed mb-8">A focused collection of hands-on projects covering multimodal AI, object detection, image classification, NLP chatbots and real-time computer vision.</p>
         <div class="reveal flex flex-wrap gap-2">
           <template x-for="f in filterOptions" :key="f.value">
             <button
@@ -139,10 +139,21 @@
                     <span class="tech-pill text-xs px-2.5 py-1 rounded-full" x-text="tag"></span>
                   </template>
                 </div>
+                <p class="mb-2 text-xs font-medium uppercase tracking-widest text-accent" x-text="p.status"></p>
                 <a :href="p.url">
                   <h2 class="font-display font-bold text-xl text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors" x-text="p.title"></h2>
                 </a>
                 <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-5" x-text="p.desc"></p>
+                <div class="mb-5 grid grid-cols-2 gap-3 text-xs text-zinc-500 dark:text-zinc-400">
+                  <div class="rounded-xl border border-zinc-100 p-3 dark:border-zinc-800">
+                    <p class="font-medium text-zinc-900 dark:text-white">Focus</p>
+                    <p x-text="p.focus"></p>
+                  </div>
+                  <div class="rounded-xl border border-zinc-100 p-3 dark:border-zinc-800">
+                    <p class="font-medium text-zinc-900 dark:text-white">Stack</p>
+                    <p x-text="p.stack"></p>
+                  </div>
+                </div>
                 <div class="flex items-center justify-between gap-4">
                   <a :href="p.url" :target="p.external ? '_blank' : null" :rel="p.external ? 'noopener noreferrer' : null" class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 dark:text-white nav-link" x-text="p.cta"></a>
                   <span class="text-xs text-zinc-400" x-text="p.year"></span>
@@ -159,9 +170,9 @@
         <div class="bg-zinc-900 dark:bg-zinc-800 rounded-3xl p-10 md:p-14 text-center relative overflow-hidden">
           <div class="absolute top-0 right-0 w-64 h-64 bg-teal-500/20 blur-3xl pointer-events-none" aria-hidden="true"></div>
           <div class="relative z-10">
-            <p class="text-xs font-medium text-accent-light tracking-widest uppercase mb-4">Open to opportunities</p>
-            <h2 class="font-display font-bold text-3xl md:text-4xl text-white mb-4">Interested in my work?</h2>
-            <p class="text-zinc-400 max-w-md mx-auto mb-8">I am available for internships, entry-level software work and AI/ML project collaboration.</p>
+            <p class="text-xs font-medium text-accent-light tracking-widest uppercase mb-4">Available for collaboration</p>
+            <h2 class="font-display font-bold text-3xl md:text-4xl text-white mb-4">Have an AI or Python project in mind?</h2>
+            <p class="text-zinc-400 max-w-md mx-auto mb-8">I am open to AI/ML internships, entry-level software work and practical project collaboration.</p>
             <a href="index.html#contact" class="inline-flex items-center gap-2 btn-primary bg-accent text-white font-medium px-8 py-3.5 rounded-full hover:bg-accent-light transition-colors">Contact me</a>
           </div>
         </div>
@@ -172,7 +183,7 @@
   <footer class="border-t border-zinc-100 dark:border-zinc-900">
     <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <p class="text-sm text-zinc-400">&copy; <span id="year"></span> Alphy Sam Roni. All rights reserved.</p>
-      <p class="text-xs text-zinc-500">Built with Tailwind CSS &amp; Alpine.js</p>
+      <p class="text-xs text-zinc-500">AI/ML portfolio based in Kerala, India</p>
     </div>
   </footer>
 
@@ -197,6 +208,9 @@
             tags: ['Streamlit', 'Gemini', 'YOLOv8', 'OpenCV', 'SQLite'],
             year: '2026',
             desc: 'Browser-based assistant for text, image and voice interactions with object detection, image quality analysis, visual question answering and chat history.',
+            status: 'Featured case study',
+            focus: 'Multimodal AI',
+            stack: 'Streamlit + Gemini',
             url: 'case-study.html',
             cta: 'View case study',
             external: false,
@@ -210,6 +224,9 @@
             tags: ['Python', 'YOLO', 'PyTorch', 'Colab'],
             year: '2026',
             desc: 'Real-time vehicle detection system using YOLO object detection and traffic datasets for vehicle identification in images and video streams.',
+            status: 'Computer vision project',
+            focus: 'Object detection',
+            stack: 'YOLO + PyTorch',
             url: 'https://github.com/whitenight-36/vehical-detection',
             cta: 'Open GitHub',
             external: true,
@@ -223,6 +240,9 @@
             tags: ['Python', 'TensorFlow', 'CNN', 'Deep Learning'],
             year: '2026',
             desc: 'CNN image classification model for multiple animal species, including preprocessing, training and model evaluation.',
+            status: 'Deep learning project',
+            focus: 'Image classification',
+            stack: 'TensorFlow + CNN',
             url: 'https://github.com/whitenight-36/animal-classification',
             cta: 'Open GitHub',
             external: true,
@@ -236,6 +256,9 @@
             tags: ['Python', 'NLP', 'NLTK', 'Scikit-Learn'],
             year: '2026',
             desc: 'Healthcare query chatbot using text preprocessing, intent recognition and automated conversational responses.',
+            status: 'NLP project',
+            focus: 'Intent recognition',
+            stack: 'NLTK + Scikit-Learn',
             url: 'https://github.com/whitenight-36/simple-chatbot',
             cta: 'Open GitHub',
             external: true,
@@ -249,6 +272,9 @@
             tags: ['Python', 'OpenCV', 'Haar Cascade', 'NumPy'],
             year: '2026',
             desc: 'Real-time face detection and tracking application using Haar Cascade and image processing techniques.',
+            status: 'Computer vision project',
+            focus: 'Face detection',
+            stack: 'OpenCV + NumPy',
             url: 'https://github.com/whitenight-36/face',
             cta: 'Open GitHub',
             external: true,

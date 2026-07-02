@@ -81,7 +81,7 @@
     :class="sc ? 'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-sm shadow-black/5' : ''">
     <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
       <a href="#hero" class="font-display font-bold text-xl tracking-tight relative z-10">
-        
+        <span class="text-zinc-900 dark:text-white">Alphy</span><span class="text-accent">Roni</span>
       </a>
 
       <ul class="hidden md:flex items-center gap-8 text-sm" role="list">
@@ -89,7 +89,7 @@
         <li><a href="#projects" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s === 'projects' ? 'on !text-zinc-900 dark:!text-white' : ''">Projects</a></li>
         <li><a href="#internship" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s === 'internship' ? 'on !text-zinc-900 dark:!text-white' : ''">Internship</a></li>
         <li><a href="#skills" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s === 'skills' ? 'on !text-zinc-900 dark:!text-white' : ''">Skills</a></li>
-        <li><a href="#education" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s === 'education' ? 'on !text-zinc-900 dark:!text-white' : ''">Education</a></li>
+        <li><a href="#education" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s === 'education' ? 'on !text-zinc-900 dark:!text-white' : ''">Credentials</a></li>
         <li><a href="#contact" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s === 'contact' ? 'on !text-zinc-900 dark:!text-white' : ''">Contact</a></li>
       </ul>
 
@@ -119,7 +119,7 @@
         <li><a href="#projects" @click="mm = false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Projects</a></li>
         <li><a href="#internship" @click="mm = false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Internship</a></li>
         <li><a href="#skills" @click="mm = false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Skills</a></li>
-        <li><a href="#education" @click="mm = false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Education</a></li>
+        <li><a href="#education" @click="mm = false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Credentials</a></li>
         <li><a href="#contact" @click="mm = false" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Contact</a></li>
         <li class="pt-2 border-t border-zinc-100 dark:border-zinc-900">
           <a href="Alphy-Sam-Roni-Resume.pdf" class="inline-flex btn-shine bg-accent text-white font-medium text-sm px-5 py-2.5 rounded-full" download>Download resume</a>
@@ -136,18 +136,22 @@
       <div class="relative z-10 max-w-6xl mx-auto px-6 py-24 w-full">
         <div class="grid md:grid-cols-[1.08fr_.92fr] gap-12 items-center">
           <div>
-            <p class="reveal text-sm font-medium text-accent tracking-widest uppercase mb-4">BCA Student | AI &amp; ML Developer</p>
+            <p class="reveal text-sm font-medium text-accent tracking-widest uppercase mb-4">BCA Student | AI &amp; Machine Learning Developer</p>
             <h1 class="reveal d1 font-display font-bold text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight text-zinc-900 dark:text-white mb-6">
               Hi, I'm <span class="text-accent">Alphy Sam Roni</span>
             </h1>
             <p class="reveal d2 text-lg md:text-xl text-zinc-500 dark:text-zinc-400 font-light leading-relaxed max-w-xl mb-10">
-              Motivated BCA student from Pathanamthitta, Kerala, focused on Machine Learning, Data Science, Artificial Intelligence, Computer Vision, NLP and Software Development.
+              I build practical AI and machine learning projects with Python, computer vision, NLP and data workflows, backed by hands-on internship experience and verified certifications.
             </p>
             <div class="reveal d3 flex flex-wrap gap-4">
               <a href="#projects" class="btn-shine inline-flex items-center gap-2 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-medium px-7 py-3.5 rounded-full hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors text-sm">
                 View projects
               </a>
               <a href="Alphy-Sam-Roni-Resume.pdf" download class="inline-flex items-center gap-2 border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 font-medium px-7 py-3.5 rounded-full hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors text-sm">Download resume</a>
+            </div>
+            <div class="reveal d3 mt-5 flex flex-wrap gap-2 text-xs font-medium">
+              <span class="rounded-full border border-accent/25 bg-teal-50 px-3 py-1.5 text-accent dark:bg-teal-950/30">Open to AI/ML internships</span>
+              <span class="rounded-full border border-zinc-200 px-3 py-1.5 text-zinc-600 dark:border-zinc-800 dark:text-zinc-300">Based in Kerala, India</span>
             </div>
             <div class="reveal d3 flex flex-wrap gap-3 mt-8 text-sm text-zinc-500 dark:text-zinc-400">
               <a class="hover:text-accent transition-colors" href="mailto:alphysamrony@gmail.com">alphysamrony@gmail.com</a>
@@ -157,9 +161,9 @@
               <span>Pathanamthitta, Kerala</span>
             </div>
             <div class="reveal d3 grid grid-cols-2 sm:grid-cols-4 gap-4 mt-14 pt-8 border-t border-zinc-100 dark:border-zinc-900">
-              <div><p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">2024-28</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">BCA timeline</p></div>
-              <div><p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">5</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">AI projects</p></div>
-              <div><p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">2026</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">ML internship</p></div>
+              <div><p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">2024-28</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">BCA program</p></div>
+              <div><p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">5</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Portfolio projects</p></div>
+              <div><p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">280</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Internship hours</p></div>
               <div><p class="font-display font-bold text-3xl text-zinc-900 dark:text-white">9</p><p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">AI credentials</p></div>
             </div>
           </div>
@@ -169,7 +173,7 @@
               <div class="photo-frame w-full h-full rounded-[2rem] shadow-2xl shadow-teal-950/10">
                 <img src="assets/alphy-sam-roni-profile.jpeg" alt="Alphy Sam Roni profile photo" loading="eager">
               </div>
-              <div class="absolute -bottom-4 -left-4 bg-accent text-white font-display font-bold text-sm px-4 py-2.5 rounded-2xl shadow-lg">Open to AI and software roles</div>
+              <div class="absolute -bottom-4 -left-4 bg-accent text-white font-display font-bold text-sm px-4 py-2.5 rounded-2xl shadow-lg">AI/ML portfolio</div>
             </div>
           </div>
         </div>
@@ -180,12 +184,12 @@
       <div class="max-w-6xl mx-auto px-6">
         <div class="grid lg:grid-cols-[.8fr_1.2fr] gap-12 items-start">
           <div>
-            <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Career objective</p>
+            <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Professional profile</p>
             <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">Summary</h2>
           </div>
           <div class="reveal d2 bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-100 dark:border-zinc-800">
             <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed text-lg">
-              I am seeking opportunities as a Data Scientist, Machine Learning Engineer, Python Developer, Data Analyst, Prompt Engineer or Software Engineer. My project experience includes AI-powered applications, image classification systems, NLP chatbots and object detection models.
+              I am an AI and machine learning focused BCA student seeking internships and entry-level opportunities in data science, machine learning engineering, Python development, data analysis and software engineering. My work combines model development, AI-assisted applications, image classification, NLP chatbots and object detection systems.
             </p>
             <div class="grid sm:grid-cols-2 gap-4 mt-8">
               <div class="border border-zinc-100 dark:border-zinc-800 rounded-xl p-5">
@@ -193,8 +197,8 @@
                 <p class="text-sm text-zinc-500 dark:text-zinc-400">Bachelor of Computer Applications, Mahatma Gandhi University</p>
               </div>
               <div class="border border-zinc-100 dark:border-zinc-800 rounded-xl p-5">
-                <p class="font-display font-bold text-zinc-900 dark:text-white mb-1">Current focus</p>
-                <p class="text-sm text-zinc-500 dark:text-zinc-400">Python, ML models, computer vision, NLP, data workflows</p>
+                <p class="font-display font-bold text-zinc-900 dark:text-white mb-1">Core strengths</p>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400">Python, ML models, computer vision, NLP, data workflows and applied AI tools</p>
               </div>
             </div>
           </div>
@@ -318,11 +322,20 @@
           <div>
             <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Experience</p>
             <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">Internship</h2>
+            <p class="reveal d2 mt-4 max-w-sm text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">Verified 280-hour AI and data science internship experience with completion certificate available for review.</p>
           </div>
           <article class="reveal d2 bg-zinc-900 dark:bg-zinc-800 rounded-2xl p-8 border border-zinc-800">
-            <p class="text-sm text-accent font-medium mb-2">April 2026 - June 2026</p>
-            <h3 class="font-display font-bold text-2xl text-white mb-1">Machine Learning Intern</h3>
-            <p class="text-zinc-400 mb-6">NEXT GEN PRO</p>
+            <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <p class="text-sm text-accent font-medium mb-2">April 6, 2026 - June 4, 2026</p>
+                <h3 class="font-display font-bold text-2xl text-white mb-1">Machine Learning Intern</h3>
+                <p class="text-zinc-400">NextgenPro Innovations and Edupark Pvt. Ltd</p>
+              </div>
+              <div class="rounded-2xl border border-accent-light/30 bg-teal-500/10 px-4 py-3 text-left">
+                <p class="text-xs uppercase tracking-widest text-accent-light">Completed</p>
+                <p class="font-display text-2xl font-bold text-white">280 hrs</p>
+              </div>
+            </div>
             <ul class="grid sm:grid-cols-2 gap-4 text-sm text-zinc-300 leading-relaxed">
               <li class="border border-zinc-700 rounded-xl p-4">Worked on machine learning models using Python.</li>
               <li class="border border-zinc-700 rounded-xl p-4">Performed data preprocessing and feature engineering on datasets.</li>
@@ -398,8 +411,8 @@
     <section id="education" class="py-24">
       <div class="max-w-6xl mx-auto px-6">
         <div class="mb-14">
-          <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Resume details</p>
-          <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">Education &amp; more</h2>
+          <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Education and credentials</p>
+          <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">Academic and Professional Proof</h2>
         </div>
         <div class="grid lg:grid-cols-3 gap-6">
           <div class="reveal d1 bg-white dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
@@ -419,7 +432,10 @@
             </div>
           </div>
           <div class="reveal d2 bg-white dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
-            <h3 class="font-display font-bold text-xl mb-5">Certifications</h3>
+            <div class="mb-5 flex items-center justify-between gap-4">
+              <h3 class="font-display font-bold text-xl">Certifications</h3>
+              <span class="rounded-full bg-teal-50 px-3 py-1 text-xs font-medium text-accent dark:bg-teal-950/30">Verified credentials</span>
+            </div>
             <div class="space-y-5">
               <div>
                 <p class="font-medium">Google AI Professional Certificate</p>
@@ -441,8 +457,8 @@
               </div>
               <div class="pt-5 border-t border-zinc-100 dark:border-zinc-800">
                 <p class="font-medium">Artificial Intelligence Certification (6 Months)</p>
-                <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Institution training in artificial intelligence through St. Thomas Arts &amp; Science College, Konni.</p>
-                <p class="text-xs text-accent mt-1">Year: 2024</p>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">6-month diploma-style training in artificial intelligence through St. Thomas Arts &amp; Science College, Konni.</p>
+                <p class="text-xs text-accent mt-1">Course period: July 2024 - January 2025</p>
                 <button type="button" @click="openCertificate('Artificial Intelligence Certification (6 Months)', 'assets/certificates/artificial-intelligence-certification-6-months-2024.png', 'Artificial Intelligence Certification certificate awarded to Alphy Sam Roni')" class="mt-4 inline-flex items-center gap-2 rounded-full border border-accent/30 px-4 py-2 text-xs font-medium text-accent transition-colors hover:bg-teal-50 dark:hover:bg-teal-950/30">
                   <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 12s3.75-6.75 9.75-6.75S21.75 12 21.75 12s-3.75 6.75-9.75 6.75S2.25 12 2.25 12z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                   View certificate
@@ -493,7 +509,7 @@
             <div>
               <p class="reveal text-xs font-medium text-accent-light tracking-widest uppercase mb-3">Contact</p>
               <h2 class="reveal d1 font-display font-bold text-4xl md:text-5xl text-white leading-tight mb-5">Let's connect</h2>
-              <p class="reveal d2 text-zinc-400 leading-relaxed mb-8">I am open to internships, entry-level AI/ML roles, Python development work and collaborative academic projects.</p>
+              <p class="reveal d2 text-zinc-400 leading-relaxed mb-8">I am open to AI/ML internships, entry-level software work, Python development and collaborative academic projects where I can contribute and keep learning quickly.</p>
               <div class="reveal d3 flex flex-wrap gap-3">
                 <a href="mailto:alphysamrony@gmail.com" class="btn-shine bg-accent text-white font-medium px-6 py-3 rounded-full hover:bg-accent-light transition-colors text-sm">Email me</a>
                 <a href="Alphy-Sam-Roni-Resume.pdf" download class="border border-zinc-700 text-zinc-200 font-medium px-6 py-3 rounded-full hover:bg-zinc-800 transition-colors text-sm">Download resume</a>
@@ -544,7 +560,7 @@
   <footer class="border-t border-zinc-100 dark:border-zinc-900">
     <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <p class="text-sm text-zinc-400">&copy; <span id="yr"></span> Alphy Sam Roni. All rights reserved.</p>
-      <p class="text-xs text-zinc-500">Built with Tailwind CSS &amp; Alpine.js</p>
+      <p class="text-xs text-zinc-500">AI/ML portfolio based in Kerala, India</p>
     </div>
   </footer>
 
